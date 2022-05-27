@@ -3,10 +3,12 @@ package Notification;
 import java.util.ArrayList;
 
 import Gateways.*;
+import Messages.EmailMessage;
+import Messages.Messages;
+import Messages.MobileMessage;
 import Users.Professor;
 import Users.Student;
 import Users.TA;
-import Users.User;
 
 public class Notification {
 	ArrayList<Professor> professors;
@@ -24,63 +26,72 @@ public class Notification {
 	public void subscribeTA(TA ta) {
 		TAs.add(ta);
 	}
-	private void notifyAllUsers(Object messageType,Object messageData, String data) {
+	public void notifyAllUsers(Object messageType,String type, String data) {
 		Messages m;
 		Gateway gateway;
-		if(messageType instanceof EmailMessages) {
+		if(messageType instanceof EmailMessage) {
 			m = new EmailMessage();
 			gateway = new EmailGateway();
 			String result;
-			if(messageData instanceof Announcement) {
+			String message;
+			if(type.equalsIgnoreCase("news")) {
 				result = m.createDailyNews(data);
+				message = "news";
 			}
-			else if(messageData instanceof Grades) {
+			else if(type.equalsIgnoreCase("grades")) {
 				result = m.createGrades(data);
+				message = "grades";
+				
 			}
 			else {
 				result = m.createTasks(data);
+				message = "tasks";
 			}
 			for (Professor professor : professors) {
 				professor.notifyProfessor(result);
-				gateway.sendMessage(result);
+				gateway.sendMessage(message,result);
 			}
 			
 			for (TA ta : TAs) {
 				ta.notifyTA(result);
-				gateway.sendMessage(result);
+				gateway.sendMessage(message,result);
 			}
 			
 			for (Student student : students) {
 				student.notifyStudent(result);
-				gateway.sendMessage(result);
+				gateway.sendMessage(message,result);
 			}
 		}
 		else {
 			m = new MobileMessage();
 			gateway = new SMSGateway();
 			String result;
-			if(messageData instanceof Announcement) {
+			String message;
+			if(type.equalsIgnoreCase("news")) {
 				result = m.createDailyNews(data);
+				message = "news";
 			}
-			else if(messageData instanceof Grades) {
+			else if(type.equalsIgnoreCase("grades")) {
 				result = m.createGrades(data);
+				message = "grades";
 			}
 			else {
 				result = m.createTasks(data);
+				message = "tasks";
 			}
 			for (Professor professor : professors) {
 				professor.notifyProfessor(result);
-				gateway.sendMessage(result);
+				gateway.sendMessage(message,result);
 			}
 			
 			for (TA ta : TAs) {
 				ta.notifyTA(result);
-				gateway.sendMessage(result);
+				gateway.sendMessage(message,result);
 			}
 			
 			for (Student student : students) {
 				student.notifyStudent(result);
-				gateway.sendMessage(result);
+				gateway.sendMessage(message,result);
 			}
 		}
 	}

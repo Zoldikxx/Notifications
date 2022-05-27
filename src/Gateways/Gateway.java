@@ -1,7 +1,5 @@
 package Gateways;
 
-import Users.User;
-
 public interface Gateway {
-	public void sendMessage(Object message, String user);
+	public void sendMessage(String type,String data);
 }

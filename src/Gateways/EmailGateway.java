@@ -1,44 +1,26 @@
 package Gateways;
 
-import Messages.DailyNewsEmailMessage;
-import Messages.GradesAnnouncementEmailMessage;
-import Messages.TaskAddedEmailMessage;
-import Users.User;
+import Messages.EmailMessage;
+import Messages.Messages;
 
 public class EmailGateway implements Gateway{
 	
-	public void sendMessage(String data) {
+	public void sendMessage(String type,String data) {
 		Messages m = new EmailMessage();
 		
-		if(message instanceof DailyNewsEmailMessage) {
-//			DailyNewsEmailMessage dailyNewsEmailMessage = (DailyNewsEmailMessage) message;
-//			
-//			dailyNewsEmailMessage.prepareMessage(placeHolders);
-			
+		if(type.equalsIgnoreCase("news")) {
 			String SMS = m.createDailyNews(data);
 			System.out.println(SMS);
-			
-			// some code to send message
 		}
 		
-		else if(message instanceof GradesAnnouncementEmailMessage) {
-//			GradesAnnouncementEmailMessage announcementEmailMessage = (GradesAnnouncementEmailMessage) message;
-//			
-//			announcementEmailMessage.prepareMessage(placeHolders);
+		else if(type.equalsIgnoreCase("grades")) {
 			String SMS = m.createGrades(data);
 			System.out.println(SMS);
-			
-			// some code to send message
 		}
 		
-		else if(message instanceof TaskAddedEmailMessage) {
-//			TaskAddedEmailMessage addedEmailMessage = (TaskAddedEmailMessage) message;
-//			
-//			addedEmailMessage.prepareMessage(placeHolders);
+		else if(type.equalsIgnoreCase("tasks")) {
 			String SMS = m.createTasks(data);
 			System.out.println(SMS);
-			
-			// some code to send message by email to user
 		}
 		
 	}
