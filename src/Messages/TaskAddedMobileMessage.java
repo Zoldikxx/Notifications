@@ -1,14 +1,15 @@
 package Messages;
 
-public class TaskAddedMobileMessage {
+public class TaskAddedMobileMessage extends Task{
 
-	public String prepareMessage(String placeHolders[]) {
-		// code to replace place holders of this type
-		return "";
+	@Override
+	public String prepareMessage(String data) {
+		// TODO Auto-generated method stub
+		return "SMS: You've got a new task "+ data ;
 	}
 	
-	
-	public void addTeamDescription() {
-		
+	@Override
+	public String addTeamDescription() {
+		return "SMS: Teams must be from the same group";
 	}
 }

@@ -1,15 +1,15 @@
 package Messages;
 
-public class TaskAddedEmailMessage {
+public class TaskAddedEmailMessage extends Task{
 
-	public String prepareMessage(String placeHolders[]) {
-		// code to replace place holders of this type
-		
-		return "";
+	@Override
+	public String prepareMessage(String data) {
+		// TODO Auto-generated method stub
+		return "Email: You've got a new task "+ data;
 	}
 	
-	
-	public void addTeamDescription() {
-		
+	@Override
+	public String addTeamDescription() {
+		return "Email: Teams must be from the same group";
 	}
 }
