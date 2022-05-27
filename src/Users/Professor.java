@@ -2,7 +2,7 @@ package Users;
 
 import java.sql.Date;
 
-public class Professor {
+public class Professor extends User{
 	String name;
 	String department;
 	Date hirringDate;
