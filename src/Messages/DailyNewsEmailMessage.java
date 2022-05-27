@@ -1,9 +1,10 @@
 package Messages;
 
-public class DailyNewsEmailMessage {
-	
-	public String prepareMessage(String placeHolders[]) {
-		// code to replace place holders of this type
-		return "";
+public class DailyNewsEmailMessage extends Announcment{
+
+	@Override
+	public String prepareMessage(String data) {
+		return "Email: Your've a new announcment " + data;
 	}
-}
+
+	}
