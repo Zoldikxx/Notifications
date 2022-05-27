@@ -1,16 +1,14 @@
 import java.util.ArrayList;
 
-import Gateways.EmailGateway;
-import Messages.TaskAddedEmailMessage;
+import Messages.EmailMessage;
+import Messages.Messages;
+import Messages.MobileMessage;
 import Notification.Notification;
 import Users.Professor;
 import Users.Student;
 import Users.TA;
-enum MessageGateway{
-	
-}
+
 public class Course {
-	
 	String name;
 	String code;
 	Notification notification;
@@ -71,22 +69,22 @@ public class Course {
 	
 	public void AddAssignment(String assignBody) {
 		if(message instanceof EmailMessage)
-			notification.notifyAllUsers(new EmailMessage(),new Task(),assignBody);
+			notification.notifyAllUsers(new EmailMessage(),"task",assignBody);
 		else
-			notification.notifyAllUsers(new MobileMessage(),new Task(),assignBody);
+			notification.notifyAllUsers(new MobileMessage(),"task",assignBody);
 	}
 	
 	public void AddGrade(String grade) {
 		if(message instanceof EmailMessage)
-			notification.notifyAllUsers(new EmailMessage(),new Grades(),assignBody);
+			notification.notifyAllUsers(new EmailMessage(),"grades",grade);
 		else
-			notification.notifyAllUsers(new MobileMessage(),new Grades(),assignBody);
+			notification.notifyAllUsers(new MobileMessage(),"grades",grade);
 	}
 	
 	public void addNews(String news ) {
 		if(message instanceof EmailMessage)
-			notification.notifyAllUsers(new EmailMessage(),new Grades(),assignBody);
+			notification.notifyAllUsers(new EmailMessage(),"news",news);
 		else
-			notification.notifyAllUsers(new MobileMessage(),new Grades(),assignBody);
+			notification.notifyAllUsers(new MobileMessage(),"news",news);
 	}	
 }
