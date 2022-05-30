@@ -1,8 +1,8 @@
-package Users;
+package users;
 
-public class Student extends User{
+public class Student{
 	String name;
-	int Id;
+	int id;
 	String email;
 	String phoneNumber;
 	
@@ -11,7 +11,7 @@ public class Student extends User{
 	public Student(String name, int id, String email, String phoneNumber) {
 		super();
 		this.name = name;
-		Id = id;
+		this.id = id;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
@@ -45,11 +45,11 @@ public class Student extends User{
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	
 	

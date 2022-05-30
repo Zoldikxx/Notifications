@@ -1,6 +1,6 @@
-package Users;
+package users;
 
-public class TA extends User{
+public class TA{
 	String name;
 	String department;
 	String email;
@@ -26,11 +26,9 @@ public class TA extends User{
 		this.email = email;
 	}
 
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -53,8 +51,7 @@ public class TA extends User{
 	}
 	
 	public void notifyTA(String message) {
-		// do some stuff
-		
+		System.out.println(this.name + " You got a notification: " + message);	
 	}
-	
+
 }

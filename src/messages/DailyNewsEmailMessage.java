@@ -1,10 +1,9 @@
-package Messages;
+package messages;
 
-public class DailyNewsEmailMessage extends Announcment{
+public class DailyNewsEmailMessage implements Announcment{
 
-	@Override
 	public String prepareMessage(String data) {
 		return "Email: Your've a new announcment " + data;
 	}
 
-	}
+}

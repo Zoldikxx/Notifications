@@ -1,21 +1,18 @@
-import java.util.ArrayList;
+package course;
 
-import Messages.EmailMessage;
-import Messages.Messages;
-import Messages.MobileMessage;
-import Notification.Notification;
-import Users.Professor;
-import Users.Student;
-import Users.TA;
+import messages.EmailMessage;
+import messages.Messages;
+import messages.MobileMessage;
+import notification.Notification;
+import users.Professor;
+import users.Student;
+import users.TA;
 
 public class Course {
 	String name;
 	String code;
 	Notification notification;
 	Messages message;
-	ArrayList<Professor> professors;
-	ArrayList<TA> TAs;
-	ArrayList<Student> students;
 	
 	public Course(String name, String code) {
 		super();
@@ -67,14 +64,14 @@ public class Course {
 		notification.subscribeTA(ta);
 	}
 	
-	public void AddAssignment(String assignBody) {
+	public void addAssignment(String assignBody) {
 		if(message instanceof EmailMessage)
 			notification.notifyAllUsers(new EmailMessage(),"task",assignBody);
 		else
 			notification.notifyAllUsers(new MobileMessage(),"task",assignBody);
 	}
 	
-	public void AddGrade(String grade) {
+	public void addGrade(String grade) {
 		if(message instanceof EmailMessage)
 			notification.notifyAllUsers(new EmailMessage(),"grades",grade);
 		else
