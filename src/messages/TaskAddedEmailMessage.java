@@ -1,13 +1,11 @@
-package Messages;
+package messages;
 
-public class TaskAddedEmailMessage extends Task{
+public class TaskAddedEmailMessage implements Task{
 
-	@Override
 	public String prepareMessage(String data) {
 		return "Email: You've got a new task "+ data;
 	}
 	
-	@Override
 	public String addTeamDescription() {
 		return "Email: Teams must be from the same group";
 	}
